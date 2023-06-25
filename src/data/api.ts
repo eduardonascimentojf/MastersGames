@@ -5,4 +5,5 @@ export const api = axios.create({
 	headers: {
 		"dev-email-address": import.meta.env.VITE_HEADER_EMAIL,
 	},
+	timeout: 5000,
 });

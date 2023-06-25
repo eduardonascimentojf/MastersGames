@@ -13,7 +13,7 @@ export function SearchGames() {
 	const [search, setSearch] = useState("");
 	const [currentPage, setCurrentPage] = useState(0);
 	const itensPage = 12;
-	const { games } = useGames();
+	const { games, isLoading, messageError } = useGames();
 	const [pages, setPages] = useState(1);
 
 	const startIndex = currentPage * itensPage;
@@ -54,7 +54,7 @@ export function SearchGames() {
 					type="search"
 				/>
 			</div>
-			{games ? (
+			{!isLoading ? (
 				<S.GridConteiner>
 					{filteredList.result.length > 0 ? (
 						<>
@@ -63,10 +63,18 @@ export function SearchGames() {
 							))}
 						</>
 					) : (
-						<h5 className="notFound">
-							Nenhum jogo encontrado com o nome
-							<span>{search}!</span>
-						</h5>
+						<>
+							{search.length > 0 ? (
+								<h5 className="notFound">
+									Nenhum jogo encontrado com o nome
+									<span>{search}!</span>
+								</h5>
+								):(
+									<h5 className="notFound">
+									{messageError}
+								</h5>
+							)}
+						</>
 					)}
 				</S.GridConteiner>
 			) : (
