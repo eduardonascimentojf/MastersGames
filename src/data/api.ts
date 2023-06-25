@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const api = axios.create({
-	baseURL: "https://games-test-api-81e9fb0d564a.herokuapp.com/api/",
+	baseURL: import.meta.env.VITE_API_URL,
 	headers: {
-		"dev-email-address": "ema@gm.com",
+		"dev-email-address": import.meta.env.VITE_HEADER_EMAIL,
 	},
 });
