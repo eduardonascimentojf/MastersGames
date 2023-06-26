@@ -22,9 +22,8 @@ export function SearchGames() {
 	const { filterGenre } = useFilter();
 	const filteredList = useMemo(() => {
 		const searchLower = search.toLowerCase();
-		let result = [];
+		const result = [];
 		const genres: string[] = [];
-
 		if (games)
 			for (let i = 0; i < games.length; i++) {
 				if (
@@ -37,11 +36,10 @@ export function SearchGames() {
 					}
 				}
 			}
-		result = result.splice(startIndex, endIndex);
 
-		setPages(result.length);
+		setPages(Math.ceil(result.length / 12));
 		return { result, genres };
-	}, [search, games, startIndex, endIndex, filterGenre]);
+	}, [search, games, filterGenre]);
 
 	return (
 		<S.Conteiner>
@@ -58,7 +56,7 @@ export function SearchGames() {
 				<S.GridConteiner>
 					{filteredList.result.length > 0 ? (
 						<>
-							{filteredList.result.map((game) => (
+							{filteredList.result.slice(startIndex, endIndex).map((game) => (
 								<CardGame {...game} key={game.id} />
 							))}
 						</>
@@ -69,10 +67,8 @@ export function SearchGames() {
 									Nenhum jogo encontrado com o nome
 									<span>{search}!</span>
 								</h5>
-								):(
-									<h5 className="notFound">
-									{messageError}
-								</h5>
+							) : (
+								<h5 className="notFound">{messageError}</h5>
 							)}
 						</>
 					)}
