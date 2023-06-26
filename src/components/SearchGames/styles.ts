@@ -25,9 +25,15 @@ export const GridConteiner = styled.div`
 	}
 	@media (max-width: 1200px) {
 		grid-template-columns: repeat(2, 350px);
+		.notFound {
+			grid-column: 1;
+		}
 	}
 	@media (max-width: 850px) {
 		grid-template-columns: repeat(1, 350px);
+		.notFound {
+			grid-column: 1;
+		}
 	}
 	@media (max-width: 500px) {
 		grid-template-columns: repeat(1, auto);
