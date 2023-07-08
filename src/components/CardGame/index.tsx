@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { ICardGame } from "../../types";
 import { Conteiner } from "./styles";
-import { BsPcDisplay } from "react-icons/bs";
+import { BsFillHeartFill, BsHeart, BsPcDisplay } from "react-icons/bs";
 import { auxDate } from "../utils";
 import ReactCardFlip from "react-card-flip";
+
 export function CardGame(props: ICardGame) {
 	const [isFlipped, setIsFlipped] = useState(false);
+
 	return (
 		<Conteiner key={props.id}>
 			<ReactCardFlip isFlipped={isFlipped}>
-				<div onClick={() => setIsFlipped(!isFlipped)}>
+				<div>
 					<img src={props.thumbnail} alt={props.title} />
+					<div className="fav">
+						<BsFillHeartFill />
+					</div>
 					<div className="info">
 						<h3>
 							<strong>Titulo: </strong>
@@ -25,9 +30,15 @@ export function CardGame(props: ICardGame) {
 							{props.platform}
 							<BsPcDisplay />
 						</p>
+						<p className="viewMore" onClick={() => setIsFlipped(!isFlipped)}>
+							Ver Mais ↓
+						</p>
 					</div>
 				</div>
-				<div onClick={() => setIsFlipped(!isFlipped)}>
+				<div>
+					<div className="fav back">
+						<BsHeart />
+					</div>
 					<div className="info back">
 						<h3>
 							<strong>Titulo: </strong>
@@ -50,12 +61,18 @@ export function CardGame(props: ICardGame) {
 							<strong>Data: </strong>
 							{auxDate(props.release_date)}
 						</p>
-						<p>
-							<strong>Free Game: </strong>
-							<a href={props.freetogame_profile_url} target="_blank">
-								Ir para freetogame
+						<div className="buttonsBack">
+							<a
+								href={props.freetogame_profile_url}
+								target="_blank"
+								className="link_redirect"
+							>
+								Free Game
 							</a>
-						</p>
+							<p className="seeLess" onClick={() => setIsFlipped(!isFlipped)}>
+								Ver Menos ↑
+							</p>
+						</div>
 					</div>
 				</div>
 			</ReactCardFlip>

@@ -1,10 +1,10 @@
 import styled from "styled-components";
-export const GridConteiner = styled.div`
+export const GridConteiner = styled.ul`
 	padding: 24px;
 	margin: 24px 0px;
 	border-radius: 24px;
 	display: grid;
-	grid-template-columns: repeat(3, 350px);
+	grid-template-columns: repeat(3, 360px);
 	justify-content: center;
 	border: 2px solid var(--color-gray-secondary);
 	gap: 25px;
@@ -48,7 +48,11 @@ export const Conteiner = styled.div`
 		align-items: center;
 		justify-content: space-between;
 	}
-
+	.numberOfGamesFound {
+		margin-top: 15px;
+		opacity: 0.85;
+		font-style: italic;
+	}
 	.pagination {
 		display: flex;
 		justify-content: center;
@@ -72,6 +76,9 @@ export const Conteiner = styled.div`
 	}
 	.active {
 		background-color: var(--color-bg);
+		a {
+			color: var(--color-white);
+		}
 		&:hover {
 			background-color: var(--color-red);
 		}

@@ -17,6 +17,7 @@ export function useGames() {
 					setGames(e.data);
 				})
 				.catch((err: AxiosError) => {
+					console.log(err);
 					const statusCode = err.response?.status;
 					const statusCodeError = [500, 502, 503, 504, 507, 508, 509];
 					if (err.code === "ECONNABORTED") {

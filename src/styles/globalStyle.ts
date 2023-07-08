@@ -16,7 +16,6 @@ const GlobalStyle = createGlobalStyle`
 
   --color-bg: #6a040f;
   --color-bg-secondary: #f8f9fa;
-
   --color-black-rgba: 000, 000, 000;
   --color-black: #000000;
 

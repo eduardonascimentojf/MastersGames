@@ -2,7 +2,6 @@ import { DefaultTheme, ThemeProvider } from "styled-components";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import { SearchGames } from "./components/SearchGames";
 import { About } from "./pages/About";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -11,6 +10,7 @@ import { useTheme } from "./hooks/useTheme";
 
 import GlobalStyle from "./styles/globalStyle";
 import "react-toastify/dist/ReactToastify.css";
+import { Home } from "./pages/Home";
 
 function App() {
 	const [theme, setTheme] = useTheme<DefaultTheme>(darkTheme);
@@ -25,7 +25,7 @@ function App() {
 				<Header onChangeTheme={handleChangeTheme} />
 
 				<Routes>
-					<Route path="/" element={<SearchGames />} />
+					<Route path="/" element={<Home />} />
 					<Route path="/sobre" element={<About />} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>

@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { useGames } from "../../hooks/useGames";
 import { CardGame } from "../CardGame";
 import { Input } from "../Input";
-import { Loading } from "../Loading/inde";
+import { Loading } from "../Loading";
 import { FilterByGenre } from "../FilterByGenre";
 import { useFilter } from "../../contexts/filter";
 import ReactPaginate from "react-paginate";
@@ -47,10 +47,18 @@ export function SearchGames() {
 				<FilterByGenre genres={filteredList.genres} />
 				<Input
 					value={search}
-					onChangeSearch={setSearch}
+					onChange={(e) => setSearch(e.target.value)}
 					placeholder="Busque por jogos"
 					type="search"
+					name="Busque por jogos"
 				/>
+			</div>
+			<div className="numberOfGamesFound">
+				{filteredList.result.length > 1 ? (
+					<p>{filteredList.result.length} jogos encontrados!</p>
+				) : (
+					<p>{filteredList.result.length} jogo encontrado!</p>
+				)}
 			</div>
 			{!isLoading ? (
 				<S.GridConteiner>

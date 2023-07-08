@@ -9,10 +9,8 @@ export const Conteiner = styled.header`
 	color: var(--color-white);
 
 	.logo {
-		h1 {
-			font-size: xx-large;
-			font-weight: 600;
-		}
+		width: 250px;
+		height: 70px;
 	}
 	ul {
 		display: flex;
@@ -44,4 +42,6 @@ export const Conteiner = styled.header`
 	@media (max-width: 600px) {
 		flex-direction: column;
 	}
+
+	
 `;

@@ -21,7 +21,7 @@ export function FilterByGenre(props: Props) {
 
 	return (
 		<S.FilterContainer>
-			<button onClick={handleOpen}>
+			<button onClick={handleOpen} aria-label="Filtro">
 				{filterGenre === "all" ? (
 					<p>Selecionar gênero</p>
 				) : (
@@ -44,9 +44,7 @@ export function FilterByGenre(props: Props) {
 							{genre} {filterGenre === genre && <BsCheck />}
 						</li>
 					))}
-					{props.genres.length == 0 && (
-						<li>Nenhum gênero encontrado</li>
-					)}
+					{props.genres.length == 0 && <li>Nenhum gênero encontrado</li>}
 				</S.PriorityFilter>
 			)}
 		</S.FilterContainer>

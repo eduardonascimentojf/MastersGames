@@ -2,17 +2,10 @@ import { InputHTMLAttributes } from "react";
 import * as S from "./styles";
 import { BsSearch } from "react-icons/bs";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-	onChangeSearch: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export function Input(props: InputProps) {
+export function Input(props: InputHTMLAttributes<HTMLInputElement>) {
 	return (
 		<S.InputContainer>
-			<S.Input
-				onChange={(e) => props.onChangeSearch(e.target.value)}
-				{...props}
-			/>
+			<S.Input {...props} />
 			<BsSearch />
 		</S.InputContainer>
 	);
