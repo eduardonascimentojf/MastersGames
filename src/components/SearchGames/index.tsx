@@ -62,26 +62,25 @@ export function SearchGames() {
 							<p>{filteredList.result.length} jogo encontrado!</p>
 						)}
 					</div>
-					<S.GridConteiner>
-						{filteredList.result.length > 0 ? (
-							<>
-								{filteredList.result.slice(startIndex, endIndex).map((game) => (
-									<CardGame {...game} key={game.id} />
-								))}
-							</>
-						) : (
-							<S.GridConteiner>
-								{search.length > 0 ? (
-									<h5 className="notFound">
-										Nenhum jogo encontrado com o nome
-										<span>{search}!</span>
-									</h5>
-								) : (
-									<h5 className="notFound">{messageError}</h5>
-								)}
-							</S.GridConteiner>
-						)}
-					</S.GridConteiner>
+
+					{filteredList.result.length > 0 ? (
+						<S.GridConteiner>
+							{filteredList.result.slice(startIndex, endIndex).map((game) => (
+								<CardGame {...game} key={game.id} />
+							))}
+						</S.GridConteiner>
+					) : (
+						<>
+							{search.length > 0 ? (
+								<h5 className="notFound">
+									Nenhum jogo encontrado com o nome
+									<span>{search}!</span>
+								</h5>
+							) : (
+								<h5 className="notFound">{messageError}</h5>
+							)}
+						</>
+					)}
 				</>
 			) : (
 				<Loading />

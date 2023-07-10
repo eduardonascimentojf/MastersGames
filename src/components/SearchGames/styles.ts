@@ -9,20 +9,6 @@ export const GridConteiner = styled.ul`
 	border: 2px solid var(--color-gray-secondary);
 	gap: 25px;
 
-	.notFound {
-		word-break: break-word;
-		width: 100%;
-		text-align: center;
-		font-size: x-large;
-		grid-column: 2;
-
-		span {
-			font-weight: 800;
-			font-style: italic;
-			text-decoration: underline;
-			margin-left: 5px;
-		}
-	}
 	@media (max-width: 1200px) {
 		grid-template-columns: repeat(2, 350px);
 		.notFound {
@@ -40,6 +26,8 @@ export const GridConteiner = styled.ul`
 	}
 `;
 export const Conteiner = styled.div`
+	display: flex;
+	flex-direction: column;
 	padding: 8px;
 	min-height: 450px;
 	padding: 10px 25px;
@@ -52,6 +40,20 @@ export const Conteiner = styled.div`
 		margin-top: 15px;
 		opacity: 0.85;
 		font-style: italic;
+	}
+	.notFound {
+		word-break: break-word;
+		width: 100%;
+		text-align: center;
+		font-size: x-large;
+		grid-column: 2;
+		margin: auto 0;
+		span {
+			font-weight: 800;
+			font-style: italic;
+			text-decoration: underline;
+			margin-left: 5px;
+		}
 	}
 	.pagination {
 		display: flex;

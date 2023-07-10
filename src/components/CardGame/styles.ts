@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cssVar, shade, transparentize } from "polished";
+import { cssVar, shade } from "polished";
 
 export const Conteiner = styled.div`
 	&:hover {
@@ -28,8 +28,7 @@ export const Conteiner = styled.div`
 			top: 0px;
 			right: 0px;
 			border-radius: 0px 0px 24px 24px;
-			background-color: ${() =>
-				transparentize(0.1, cssVar("--color-gray-secondary") + "")};
+			background-color: var(--color-gray-secondary);
 			align-items: end;
 			margin: auto;
 			margin-right: 8px;
@@ -42,7 +41,7 @@ export const Conteiner = styled.div`
 			justify-content: center;
 			> div {
 				display: flex;
-				flex-direction: column;
+				flex-direction: column-reverse;
 			}
 			svg {
 				cursor: pointer;
@@ -72,11 +71,12 @@ export const Conteiner = styled.div`
 			.seeLess {
 				padding: 5px 25px;
 				background-color: var(--color-bg);
-
+				cursor: pointer;
 				border-radius: 24px;
 				color: var(--color-white);
 				&:hover {
-					background-color: ${() => shade(0.3, cssVar("--color-bg") + "")};
+					background-color: ${() =>
+						shade(0.3, cssVar("--color-bg").toString())};
 				}
 			}
 			.viewMore {

@@ -12,6 +12,8 @@ import GlobalStyle from "./styles/globalStyle";
 import "react-toastify/dist/ReactToastify.css";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
+import { PageUp } from "./components/PageUp";
+import { Favorites } from "./pages/Favorites";
 
 function App() {
 	const [theme, setTheme] = useTheme<DefaultTheme>(darkTheme);
@@ -25,9 +27,11 @@ function App() {
 				<GlobalStyle />
 
 				<Header onChangeTheme={handleChangeTheme} />
+				<PageUp />
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/sobre" element={<About />} />
+					<Route path="/favoritos" element={<Favorites />} />
 					<Route path="/auth" element={<Login />} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>

@@ -1,5 +1,7 @@
 import { BsEyeFill, BsEyeSlashFill, BsGithub, BsGoogle } from "react-icons/bs";
 import {
+	AuthError,
+	UserCredential,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 } from "firebase/auth";
@@ -10,18 +12,18 @@ import { useState } from "react";
 import { ILogin, IRegister } from "../../types";
 import { Input, InputContainer } from "../../components/Input/styles";
 import { auth } from "../../services/firebaseConfig";
-import { useAuth } from "../../contexts/auth";
+
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import {
 	errorNotification,
 	sucessNotification,
-} from "../../toastifyNotifications";
-import { Navigate } from "react-router-dom";
+} from "../../utils/toastifyNotifications";
 
 export function Login() {
 	const [passwordType, setPasswordType] = useState(true);
 	const [isLogin, setIsLogin] = useState(true);
-	const { user, signIn } = useAuth();
-
+	const { user, setUser } = useAuth();
 	const {
 		register,
 		formState: { errors },
@@ -30,25 +32,22 @@ export function Login() {
 	} = useForm<IRegister>();
 	const registerSubmit: SubmitHandler<IRegister> = (data) => {
 		createUserWithEmailAndPassword(auth, data.email, data.password)
-			.then((userCredential) => {
-				const user = userCredential.user;
+			.then((userCredential: UserCredential) => {
 				sucessNotification("Conta criada com sucesso!");
-				signIn(user);
+				setUser(userCredential.user);
 			})
-			.catch((error) => {
+			.catch((error: AuthError) => {
 				const errorMessage = error.message;
-				console.log(errorMessage);
 				errorNotification(errorMessage);
 			});
 	};
 	const loginSubmit: SubmitHandler<ILogin> = (data) => {
 		signInWithEmailAndPassword(auth, data.email, data.password)
-			.then((userCredential) => {
-				const user = userCredential.user;
+			.then((userCredential: UserCredential) => {
 				sucessNotification("Logado com sucesso!");
-				signIn(user);
+				setUser(userCredential.user);
 			})
-			.catch((error) => {
+			.catch((error: AuthError) => {
 				const errorMessage = error.message;
 				errorNotification(errorMessage);
 			});
@@ -60,6 +59,7 @@ export function Login() {
 				<div className="login">
 					<div className="col-1">
 						<h2>Logar</h2>
+
 						<div className="social">
 							<button>
 								<BsGoogle />
