@@ -55,6 +55,27 @@ export const Conteiner = styled.div`
 			object-fit: cover;
 		}
 
+		.social {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			gap: 15px;
+			button {
+				cursor: pointer;
+				width: 50px;
+				height: 50px;
+				padding: 10px;
+				border-radius: 100%;
+				border: 2px solid var(--color-gray-secondary);
+				&:hover {
+					background-color: var(--color-gray-secondary);
+				}
+				svg {
+					height: 25px;
+					width: 25px;
+				}
+			}
+		}
 	}
 	.login {
 		.col-1 {

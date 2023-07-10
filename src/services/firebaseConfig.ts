@@ -15,17 +15,3 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-
-export const actionCodeSettings = {
-	url: "https://masters-games-vert.vercel.app/",
-	handleCodeInApp: true,
-	iOS: {
-		bundleId: "com.example.ios",
-	},
-	android: {
-		packageName: "com.example.android",
-		installApp: true,
-		minimumVersion: "12",
-	},
-	dynamicLinkDomain: "example.page.link",
-};

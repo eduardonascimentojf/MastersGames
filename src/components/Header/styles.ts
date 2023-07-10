@@ -28,6 +28,9 @@ export const Conteiner = styled.header`
 				font-size: large;
 				cursor: pointer;
 				color: var(--color-white);
+				svg {
+					fill: var(--color-white);
+				}
 			}
 
 			&:hover {
@@ -42,6 +45,4 @@ export const Conteiner = styled.header`
 	@media (max-width: 600px) {
 		flex-direction: column;
 	}
-
-	
 `;
