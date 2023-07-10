@@ -11,6 +11,7 @@ import { useTheme } from "./hooks/useTheme";
 import GlobalStyle from "./styles/globalStyle";
 import "react-toastify/dist/ReactToastify.css";
 import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
 
 function App() {
 	const [theme, setTheme] = useTheme<DefaultTheme>(darkTheme);
@@ -22,11 +23,12 @@ function App() {
 		<ThemeProvider theme={theme}>
 			<BrowserRouter>
 				<GlobalStyle />
-				<Header onChangeTheme={handleChangeTheme} />
 
+				<Header onChangeTheme={handleChangeTheme} />
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/sobre" element={<About />} />
+					<Route path="/auth" element={<Login />} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>
 				<Footer />

@@ -12,9 +12,6 @@ export const Conteiner = styled.div`
 			border-radius: 0px 0px 24px 24px;
 			border: 1px solid var(--color-gray-secondary);
 			background-color: var(--color-gray);
-
-			transform-style: preserve-3d;
-			transition: transform 0.4s;
 		}
 
 		img {
@@ -27,6 +24,7 @@ export const Conteiner = styled.div`
 		}
 		.fav {
 			position: absolute;
+
 			top: 0px;
 			right: 0px;
 			border-radius: 0px 0px 24px 24px;
@@ -37,18 +35,22 @@ export const Conteiner = styled.div`
 			margin-right: 8px;
 			width: auto;
 			width: 30px;
-			height: 45px;
+			padding: 5px 0px;
 			display: flex;
+			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+			> div {
+				display: flex;
+				flex-direction: column;
+			}
 			svg {
+				cursor: pointer;
 				width: 40px;
 				height: 25px;
 				fill: var(--color-bg);
 				border-color: red;
-			}
-			&:hover {
-				svg {
+				&:hover {
 					fill: var(--color-red);
 				}
 			}

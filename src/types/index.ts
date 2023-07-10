@@ -1,3 +1,6 @@
 import { IGame } from "./IGame";
 import { ICardGame } from "./ICardGame";
-export type { ICardGame, IGame };
+import { ILogin } from "./ILogin";
+import { IRegister } from "./IRegister";
+
+export type { ICardGame, IGame, ILogin, IRegister };

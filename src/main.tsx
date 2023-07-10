@@ -2,11 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import { FilterProvider } from "./contexts/filter.tsx";
+import { AuthProvider } from "./contexts/auth.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
 		<FilterProvider>
-			<App />
+			<AuthProvider>
+				<App />
+			</AuthProvider>
 		</FilterProvider>
 	</React.StrictMode>
 );

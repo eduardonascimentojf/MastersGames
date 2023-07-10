@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
 export const Conteiner = styled.div`
-	position: fixed;
 	z-index: 10;
-	background: rgba(var(--color-black-rgba), 0.8);
+	background: rgba(var(--color-black-rgba), 0.4);
 	width: 100%;
-	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	top: 0;
-	left: 0;
+	position: static;
+	min-height: inherit;
+	cursor: progress;
 	.logo svg {
 		height: 6em;
 		padding: 1.5em;

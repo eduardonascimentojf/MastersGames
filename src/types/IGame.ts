@@ -11,3 +11,4 @@ export interface IGame {
 	release_date: string;
 	freetogame_profile_url: string;
 }
+

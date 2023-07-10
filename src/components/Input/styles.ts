@@ -15,7 +15,9 @@ export const Input = styled.input`
 export const InputContainer = styled.div`
 	position: relative;
 	width: 352px;
+
 	svg {
+		cursor: pointer;
 		position: absolute;
 		right: 20px;
 		top: 50%;
@@ -24,7 +26,7 @@ export const InputContainer = styled.div`
 			fill: var(--color-red);
 		}
 	}
-	:hover,
+	:hover:not(svg),
 	:focus-within {
 		box-shadow: var(--color-gray-secondary) 0px 1px 6px 0px;
 	}

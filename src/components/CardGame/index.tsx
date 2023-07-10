@@ -4,7 +4,7 @@ import { Conteiner } from "./styles";
 import { BsFillHeartFill, BsHeart, BsPcDisplay } from "react-icons/bs";
 import { auxDate } from "../utils";
 import ReactCardFlip from "react-card-flip";
-
+import ReactStars from "react-stars";
 export function CardGame(props: ICardGame) {
 	const [isFlipped, setIsFlipped] = useState(false);
 
@@ -15,6 +15,7 @@ export function CardGame(props: ICardGame) {
 					<img src={props.thumbnail} alt={props.title} />
 					<div className="fav">
 						<BsFillHeartFill />
+						<ReactStars count={5} size={24} color2={"#ffd700"} half={false} />
 					</div>
 					<div className="info">
 						<h3>
@@ -38,6 +39,7 @@ export function CardGame(props: ICardGame) {
 				<div>
 					<div className="fav back">
 						<BsHeart />
+						<ReactStars count={5} size={24} color2={"#ffd700"} half={false} />
 					</div>
 					<div className="info back">
 						<h3>

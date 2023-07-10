@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import * as S from "./styles";
 import { useGames } from "../../hooks/useGames";
 import { CardGame } from "../CardGame";
-import { Input } from "../Input";
+import { InputSearch } from "../InputSearch";
 import { Loading } from "../Loading";
 import { FilterByGenre } from "../FilterByGenre";
 import { useFilter } from "../../contexts/filter";
@@ -43,44 +43,46 @@ export function SearchGames() {
 
 	return (
 		<S.Conteiner>
-			<div className="headerOfGrid">
-				<FilterByGenre genres={filteredList.genres} />
-				<Input
-					value={search}
-					onChange={(e) => setSearch(e.target.value)}
-					placeholder="Busque por jogos"
-					type="search"
-					name="Busque por jogos"
-				/>
-			</div>
-			<div className="numberOfGamesFound">
-				{filteredList.result.length > 1 ? (
-					<p>{filteredList.result.length} jogos encontrados!</p>
-				) : (
-					<p>{filteredList.result.length} jogo encontrado!</p>
-				)}
-			</div>
 			{!isLoading ? (
-				<S.GridConteiner>
-					{filteredList.result.length > 0 ? (
-						<>
-							{filteredList.result.slice(startIndex, endIndex).map((game) => (
-								<CardGame {...game} key={game.id} />
-							))}
-						</>
-					) : (
-						<>
-							{search.length > 0 ? (
-								<h5 className="notFound">
-									Nenhum jogo encontrado com o nome
-									<span>{search}!</span>
-								</h5>
-							) : (
-								<h5 className="notFound">{messageError}</h5>
-							)}
-						</>
-					)}
-				</S.GridConteiner>
+				<>
+					<div className="headerOfGrid">
+						<FilterByGenre genres={filteredList.genres} />
+						<InputSearch
+							value={search}
+							onChange={(e) => setSearch(e.target.value)}
+							placeholder="Busque por jogos"
+							type="search"
+							name="Busque por jogos"
+						/>
+					</div>
+					<div className="numberOfGamesFound">
+						{filteredList.result.length > 1 ? (
+							<p>{filteredList.result.length} jogos encontrados!</p>
+						) : (
+							<p>{filteredList.result.length} jogo encontrado!</p>
+						)}
+					</div>
+					<S.GridConteiner>
+						{filteredList.result.length > 0 ? (
+							<>
+								{filteredList.result.slice(startIndex, endIndex).map((game) => (
+									<CardGame {...game} key={game.id} />
+								))}
+							</>
+						) : (
+							<S.GridConteiner>
+								{search.length > 0 ? (
+									<h5 className="notFound">
+										Nenhum jogo encontrado com o nome
+										<span>{search}!</span>
+									</h5>
+								) : (
+									<h5 className="notFound">{messageError}</h5>
+								)}
+							</S.GridConteiner>
+						)}
+					</S.GridConteiner>
+				</>
 			) : (
 				<Loading />
 			)}

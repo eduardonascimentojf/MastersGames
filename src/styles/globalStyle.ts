@@ -64,7 +64,10 @@ time, mark, audio, video {
 }
 #root{
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
 }
 a {
   color: ${(props) => props.theme.colors.text};

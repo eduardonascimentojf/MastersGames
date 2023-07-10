@@ -5,7 +5,8 @@ import { ThemeContext } from "styled-components";
 import { darkTheme } from "../../styles/theme";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { Link, useLocation } from "react-router-dom";
-
+import { ImExit } from "react-icons/im";
+import { useAuth } from "../../contexts/auth";
 interface IProps {
 	onChangeTheme: () => void;
 }
@@ -15,6 +16,8 @@ export function Header({ onChangeTheme }: IProps) {
 	const location = useLocation();
 	const { pathname } = location;
 	const splitLocation = pathname.split("/");
+
+	const { user, signOut } = useAuth();
 	return (
 		<Conteiner>
 			<div className="logo">
@@ -33,6 +36,18 @@ export function Header({ onChangeTheme }: IProps) {
 						<p>Sobre</p>
 					</Link>
 				</li>
+				{user ? (
+					<li onClick={signOut}>
+						<ImExit />
+					</li>
+				) : (
+					<li className={splitLocation[1] == "auth" ? "active" : " "}>
+						<Link to="/auth">
+							<p>Login</p>
+						</Link>
+					</li>
+				)}
+
 				<li onClick={() => onChangeTheme()}>
 					<button>
 						{theme === darkTheme ? <BsFillSunFill /> : <BsFillMoonFill />}
