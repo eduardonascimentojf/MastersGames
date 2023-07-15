@@ -1,7 +1,7 @@
-import { IGame } from "./IGame"
 
-export interface IGameFavorite extends IGame {
-	stars: number
-	isFavorite: boolean
+export interface IGameFavorite {
+	userEmail: string;
+	gameId: number
+	stars: number;
+	isFavorite: boolean;
 }
-

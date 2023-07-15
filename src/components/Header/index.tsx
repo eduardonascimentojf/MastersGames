@@ -23,10 +23,9 @@ export function Header({ onChangeTheme }: IProps) {
 	const location = useLocation();
 	const { pathname } = location;
 	const splitLocation = pathname.split("/");
-	const { user, setUser } = useAuth();
+	const { setUser } = useAuth();
 	function sign_out() {
 		redirect("/");
-
 		signOut(auth)
 			.then(() => {
 				sucessNotification("Deslogado com sucesso!");
@@ -36,6 +35,7 @@ export function Header({ onChangeTheme }: IProps) {
 				errorNotification(error.message);
 			});
 	}
+
 	return (
 		<Conteiner>
 			<div className="logo">
@@ -54,7 +54,8 @@ export function Header({ onChangeTheme }: IProps) {
 						<p>Sobre</p>
 					</Link>
 				</li>
-				{user ? (
+
+				{auth.currentUser ? (
 					<>
 						<li className={splitLocation[1] == "favoritos" ? "active" : " "}>
 							<Link to="/favoritos">

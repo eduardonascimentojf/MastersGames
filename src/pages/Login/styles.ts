@@ -1,3 +1,4 @@
+import { cssVar, shade } from "polished";
 import styled from "styled-components";
 
 export const Conteiner = styled.div`
@@ -54,7 +55,6 @@ export const Conteiner = styled.div`
 			height: 100%;
 			object-fit: cover;
 		}
-
 	}
 	.login {
 		.col-1 {
@@ -82,5 +82,8 @@ export const Conteiner = styled.div`
 		text-transform: uppercase;
 		border-radius: 15px;
 		align-self: self-end;
+		&:hover {
+			background-color: ${() => shade(0.3, cssVar("--color-bg").toString())};
+		}
 	}
 `;

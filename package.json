@@ -1,7 +1,7 @@
 {
   "name": "MastersGames",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26",
     "axios": "^1.4.0",
-    "firebase": "^10.0.0",
+    "firebase": "9.23.0",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-card-flip": "^1.2.0",
